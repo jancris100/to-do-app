@@ -20,12 +20,23 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const editTask = (index: number, newText: string) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[index].text = newText;
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
       <div className="max-w-xl mx-auto p-6">
         <TaskForm addTask={addTask} />
-        <TaskList tasks={tasks} removeTask={removeTask} toggleTaskCompletion={toggleTaskCompletion} />
+        <TaskList 
+          tasks={tasks} 
+          removeTask={removeTask} 
+          toggleTaskCompletion={toggleTaskCompletion} 
+          editTask={editTask} 
+        />
       </div>
     </div>
   );
